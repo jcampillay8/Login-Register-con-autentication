@@ -13,7 +13,7 @@ from posts.forms import PostForm
 
 def index(request):
     posts = Post.objects.all()
-    paginator = Paginator(posts, 2)
+    paginator = Paginator(posts, 3)
     num_pagina = request.GET.get('page')
     pagina_actual = paginator.get_page(num_pagina)
     return render(request, 'index.html', {'posts': pagina_actual })

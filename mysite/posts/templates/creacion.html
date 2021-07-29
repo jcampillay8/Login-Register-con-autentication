@@ -1,12 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %} Post Page {% endblock%}
+{% block nav %}
+    {% if user.is_authenticated %}
+        <li class="nav-item">
+            <a class="nav-link" href="#">{{user|capfirst}}</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">Cerrar Sesión</a>
+        </li>
+    {% else %}
+        <li class="nav-item">
+            <a class="nav-link" href="{%  url 'login' %}">Iniciar Sesión</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'register' %}">Registrarse</a>
+        </li>
+    {% endif %}
+{% endblock %}
+{% block content %}
     {% if user.is_authenticated %}
         <form action="" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
@@ -18,3 +29,4 @@
     {% endif %}
 </body>
 </html>
+{% endblock %}

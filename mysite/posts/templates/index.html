@@ -19,6 +19,12 @@
 {% endblock %}
 {% block content %}
     {% if user.is_authenticated %}
+    <div class="row">
+        <div class="col-sm-6 col-md-4 mb-3 ml-4">
+            <a class="navbar-brand mr-4 btn btn-warning" href="{% url 'crear' %}">Haz un Post {{user|capfirst}}!</a>
+        </div>
+    </div>
+    
         <div class="row">
             {% for post in posts %}
                 <div class="col-sm-6 col-md-4">
